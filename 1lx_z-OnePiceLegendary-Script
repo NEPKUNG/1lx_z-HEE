@@ -1,0 +1,441 @@
+    local win = Flux:Window("1lx_z", "One Piece legendary", Color3.fromRGB(255, 70, 70 ), Enum.KeyCode.RightControl)
+    local page1 = win:Tab("Wapon Modify", "http://www.roblox.com/asset/?id=6023426915")
+    local page2 = win:Tab("Farming", "http://www.roblox.com/asset/?id=6023426915")
+    local page3 = win:Tab("TelePort", "http://www.roblox.com/asset/?id=6023426915")
+    local page4 = win:Tab("Players Modify", "http://www.roblox.com/asset/?id=6023426915")
+    local page5 = win:Tab("Misc Modify", "http://www.roblox.com/asset/?id=6023426915")
+    local page6 = win:Tab("Fruit Modify", "http://www.roblox.com/asset/?id=6023426915")
+    local page7 = win:Tab("Drink Modify", "http://www.roblox.com/asset/?id=6023426915")
+    local page8 = win:Tab("Settings", "http://www.roblox.com/asset/?id=6023426915")
+    
+    setfflag("HumanoidParallelRemoveNoPhysics", "False")
+    setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
+    
+    function EquipWeapon(ToolSe)
+        if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
+            local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
+            wait(.1)
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
+        end
+    end
+    function Skill(use)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,use,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+        wait(.1)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false,use,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
+    end
+    if not game:GetService("Workspace"):FindFirstChild("LOL") then
+        local LOL = Instance.new("Part")
+        LOL.Name = "LOL"
+        LOL.Parent = game.Workspace
+        LOL.Anchored = true
+        LOL.Transparency = 0
+        LOL.Size = Vector3.new(50,0.5,50)
+        game.Workspace["LOL"].CFrame = CFrame.new(0,50000,0)
+    end
+    Wapon = {}
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+        if v:IsA("Tool") then
+            table.insert(Wapon ,v.Name)
+        end
+    end
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+        if v:IsA("Tool") then
+            table.insert(Wapon, v.Name)
+        end
+    end
+    local SelectWeapona = page1:Dropdown("Select Weapon",Wapon,function(Value)
+        SelectToolWeapon = Value
+        SelectToolWeaponOld = Value
+    end)
+    page1:Button("Refresh Weapon", function()
+        SelectWeapona:Clear()
+        Wapon = {}
+        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+            if v:IsA("Tool") then
+                SelectWeapona:Add(v.Name)
+            end
+        end
+        for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+            if v:IsA("Tool") then
+                SelectWeapona:Add(v.Name)
+            end
+        end
+    end)
+    page1:Toggle("Auto Equip",false,function(bool)
+        _G.Equip = bool
+    end)
+    page2:Toggle("Auto Click",false,function(bool)
+        _G.AutoClick = bool
+    end)
+    page2:Toggle("Auto Die",false,function(bool)
+        _G.AutoDie = bool
+    end)
+    page2:Toggle("Auto Spawn",_G.AutoSpawn,function(vy)
+        _G.AutoSpawn = vy
+    end)
+    page2:Line()
+    page2:Label("Auto | Skill")
+    
+    page2:Toggle("Auto Skill Z",false,function(Z)
+        _G.SkillZ = Z
+    end)
+    
+    page2:Toggle("Auto Skill X",false,function(X)
+        _G.SkillX = X
+    end)
+    
+    page2:Toggle("Auto Skill C",false,function(C)
+        _G.SkillC = C
+    end)
+    
+    page2:Toggle("Auto Skill V",false,function(V)
+        _G.SkillV = V
+    end)
+    
+    page2:Toggle("Auto Skill B",false,function(V)
+        _G.SkillB = V
+    end)
+    
+    page2:Toggle("Auto Skill F",false,function(V)
+        _G.SkillF = V
+    end)
+    
+    page2:Toggle("Auto Skill N",false,function(V)
+        _G.SkillN = V
+    end)
+    
+    page2:Line()
+    page2:Label("Chest Farm")
+    page2:Toggle("Auto reward Daily and Hourly",false,function(bool)
+        _G.Chest = bool
+    end)
+    page2:Button("Chest Farm",function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(114.5, 217.099991, -247, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(16.5, 217.100006, 139, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-310.5, 219.099991, -325, -0.707134247, 0, -0.707079291, 0, 1, 0, 0.707079291, 0, -0.707134247)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-251.260406, 272.099976, 353.275208, -0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, -0.422592998)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(108, 221.099991, -36.5, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-246.776093, 272.099976, 350.08075, 0.939700544, -0, -0.341998369, 0, 1, -0, 0.341998369, 0, 0.939700544)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-212, 221.099991, 20.5, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-246.851013, 272.099976, 355.632568, -0.906296611, 0, -0.422642082, 0, 1, 0, 0.422642082, 0, -0.906296611)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1240, 215.099991, 621.500061, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1886, 221.099991, 3312.5, -0.766061664, 0, -0.642767608, 0, 1, 0, 0.642767608, 0, -0.766061664)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1910, 221.099991, 3295.5, 0.173624337, 0, 0.984811902, 0, 1, 0, -0.984811902, 0, 0.173624337)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1894, 221.099991, 3277.5, 0.766061246, 0, 0.642767608, 0, 1, 0, -0.642767608, 0, 0.766061246)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(119.5, 245.099991, -1231.00012, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(88.5, 297.100006, -916, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-37.5, 254.099991, -1223.00012, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-272.621338, 252.099991, -943.378845, -0.707134247, 0, 0.707079291, 0, 1, 0, -0.707079291, 0, -0.707134247)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-35.25, 226.099991, 2155.75, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5260.00049, 300.100006, -7772.5, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(767, 213.099991, -1370.5, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4001, 213.100006, -2187.5, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(948, 213.099991, 1210.5, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1156, 216.100006, 3316.5, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1166, 216.100006, 3316.5, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+        wait(.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1161, 216.100006, 3316.5, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+    end)
+    page2:Line()
+    page2:Label("Auto Compass")
+    page2:Button("Open Sam Quest", function()
+        fireclickdetector(game:GetService("Workspace").Merchants.QuestMerchant.Clickable.ClickDetector)
+    end)
+    page2:Toggle("Auto Get Compass", false, function(heeman)
+        _G.GetCompass = heeman
+    end)
+    
+    page2:Button("Open Sam Quest", function()
+        pcall(function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Players")[game.Players.LocalPlayer.Name].Backpack.Compass.Poser.Value)
+        end)
+    end)
+    page2:Toggle("Auto Compass",false,function(bool)
+        _G.Compass = bool
+    end)
+    page2:Line()
+    page2:Label("Mob Farm")
+    local mob = {}
+    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do  
+        table.insert(mob, v.Name)
+    end
+    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do  
+        table.insert(mob, v.Name)
+    end
+    local MOB = page2:Dropdown("Select Mob",mob,function(Value)
+        Selectmob = Value
+    end)
+    page2:Button("Refresh Mob", function()
+        MOB:Clear()
+        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do  
+            MOB:Add(v.Name)
+        end
+        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do  
+            MOB:Add(v.Name)
+        end
+    end)
+    page2:Toggle("Kill Mon",false,function(bool)
+        _G.KillMOB = bool
+    end)
+    Distance = -4
+    page2:Slider("Distance Bring Mob",0,-60,-4,function(to)
+        Distance = to
+    end)
+    page2:Toggle("BringMob",false,function(a)
+        _G.BringMob = a
+    end)
+    local a = game.Players.LocalPlayer
+    page3:Button("Grassy", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(736.911987, 240.999954, 1208.85925, 0.999998629, 8.53519339e-12, 0.00167111703, 1.04672517e-13, 1, -5.17011456e-09, -0.00167111703, 5.17010745e-09, 0.999998629)
+    end)
+    page3:Button("Snow Moutain", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(6500.90186, 408.242096, -1260.92822, 1, 3.09397091e-11, -9.56255244e-05, -3.42345215e-11, 1, -3.44553648e-08, 9.56255244e-05, 3.44553683e-08, 1)
+    end)
+    page3:Button("Pursuer Island", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(4846.59082, 569.999817, -7142.88721, 1, -2.13217673e-11, -0.000191506464, 5.97363044e-12, 1, -8.01442255e-08, 0.000191506464, 8.01442184e-08, 1)
+    end)
+    page3:Button("Bar", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(1521.71997, 260.38623, 2187.73779, 0.999999523, 6.6250963e-11, -0.00100124662, 1.39135986e-11, 1, 8.00647513e-08, 0.00100124662, -8.00647229e-08, 0.999999523)
+    end)
+    page3:Button("Cliffs",function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(4598.32178, 216.999954, 4963.85303, 1, -6.41867462e-11, -4.87358512e-16, 6.41867462e-11, 1, 9.99964342e-08, 4.80940066e-16, -9.99964342e-08, 1)
+    end)
+    page3:Button("Windmill", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-6.96582222, 223.999954, -91.0732269, 0.999999404, -4.34663659e-11, -0.00111335726, -1.04204562e-11, 1, -4.84002918e-08, 0.00111335726, 4.8400274e-08, 0.999999404)
+    end)
+    page3:Button("Cave", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-279.768066, 216.999939, -830.823792, 1, 4.21550078e-12, -3.35741897e-05, -8.17220965e-13, 1, 1.01217033e-07, 3.35741897e-05, -1.01217033e-07, 1)
+    end)
+    page3:Button("Krizma", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-1108.61096, 340.999908, 1645.17896, 1, 1.57169243e-12, -5.6221976e-16, -1.57169243e-12, 1, 3.77803637e-08, 5.62279158e-16, -3.77803637e-08, 1)
+    end)
+    page3:Button("Pirate", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-1283.19202, 217.999954, -1348.49988, 0.999997199, -2.23426139e-10, -0.00237070094, -1.11666264e-13, 1, -9.42918632e-08, 0.00237070094, 9.42915932e-08, 0.999997199)
+    end)
+    page3:Button("Green", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-2727.12695, 252.606018, 1041.06104, 1, 1.20610785e-10, -2.08848454e-16, -1.20610785e-10, 1, -7.30120462e-08, 2.00042408e-16, 7.30120462e-08, 1)
+    end)
+    page3:Button("Trees", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(1067.70508, 216.999954, 3351.39526, 0.999993443, -1.43052341e-11, -0.00361837843, 2.26365489e-13, 1, -3.89093335e-09, 0.00361837843, 3.89090715e-09, 0.999993443)
+    end)
+    page3:Button("Pyramind", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(118.475006, 215.999863, 4772.69873, 0.99999994, -4.23309131e-11, -0.000382217753, 2.19002178e-11, 1, -5.34530322e-08, 0.000382217753, 5.34530216e-08, 0.99999994)
+    end)
+    page3:Button("Package", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-1668.46899, 216.999954, -299.617859, 0.999997258, 5.88939175e-11, -0.00235378905, 3.59808732e-12, 1, 2.65495306e-08, 0.00235378905, -2.65494666e-08, 0.999997258)
+    end)
+    page3:Button("Snowy", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-1896.12903, 221.999954, 3384.57202, 1, 1.80530327e-10, 1.66003145e-16, -1.80530327e-10, 1, 8.13827796e-08, -1.5131108e-16, -8.13827796e-08, 1)
+    end)
+    page3:Button("Mountain", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(2051.68457, 487.999908, -701.169739, 0.999834418, -3.52116771e-08, 0.0181961004, 3.33378658e-08, 1, 1.03282083e-07, -0.0181961004, -1.02658369e-07, 0.999834418)
+    end)
+    page3:Button("Marine Ford", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-3163.88965, 295.999908, -3780.28076, 0.999999404, 4.96444864e-11, 0.00107586442, -1.998576e-13, 1, -4.59580498e-08, -0.00107586442, 4.59580214e-08, 0.999999404)
+    end)
+    page3:Button("Sand Castle", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(1019.67773, 223.999954, -3277.25024, 0.99999994, -6.70090892e-12, 0.000291550066, 6.31458265e-13, 1, 2.08178683e-08, -0.000291550066, -2.08178665e-08, 0.99999994)
+    end)
+    page3:Button("Forest", function()
+        a.Character.HumanoidRootPart.CFrame = CFrame.new(-5781.01611, 215.999954, 114.144539, 0.999997854, -1.8679755e-10, -0.00208378281, 3.46718791e-12, 1, -8.79796005e-08, 0.00208378281, 8.79794015e-08, 0.999997854)
+    end)
+    distance = 4
+    page4:Slider("Distance",  0, 100,4,function(bool)
+        distance = bool
+    end)
+    page4:Toggle("Kill Player Behind",false,function(bool)
+        KillPlayer = bool
+    end)
+    page4:Toggle("Bring Players",false,function(bool)
+        _G.BringPlayer = bool
+    end)
+    page4:Toggle("Spectate Player",false,function(bool)
+        Sp = bool
+        local plr1 = game.Players.LocalPlayer.Character.Humanoid
+        local plr2 = game.Players:FindFirstChild(SelectedKillPlayer)
+        repeat wait(.1)
+            game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
+        until Sp == false 
+        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+    end)
+    PlayerName = {}
+    for i,v in pairs(game.Players:GetChildren()) do  
+        table.insert(PlayerName ,v.Name)
+    end
+    PlayerName = {}
+    for i,v in pairs(game.Players:GetChildren()) do
+        table.insert(PlayerName ,v.Name)
+    end
+    SelectedKillPlayer = ""
+    local Player = page4:Dropdown("Selected Player",PlayerName,function(plys) --true/false, replaces the current title "Dropdown" with the option that t
+        SelectedKillPlayer = plys
+        SelectedPly:Refresh("Selected Player : "..SelectedKillPlayer)
+    end)
+    page4:Button("Refrsh Player", function()
+        PlayerName = {}
+        Player:Clear()
+        for i,v in pairs(game.Players:GetChildren()) do  
+            Player:Add(v.Name)
+        end
+    end)
+    page4:Line()
+    page4:Label("Click to Player")
+    page4:Button("Teleport Player", function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(SelectedKillPlayer).Character.HumanoidRootPart.CFrame
+    end)
+    page5:Button("Teleport to Save Zone",function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace["LOL"].CFrame * CFrame.new(0,3,0)
+    end)
+    page5:Button("Ifn Jump",function()
+        game:GetService("UserInputService").JumpRequest:connect(function()
+            game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+        end)
+    end)
+    page5:Slider("Jump Power", 0, 10000,16,function(s)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+    end)
+    page5:Slider("WalkSpeed", 0, 10000,16,function(s)
+        local gt = getrawmetatable(game)
+        local old = gt.__newindex
+        setreadonly(gt, false)
+    
+        gt.__newindex = newcclosure(function(Self, key, VALE)
+            if tostring(Self) == "Humanoid" and tostring(key) == "WalkSpeed" and string.find(tostring(Self:GetFullName()), game.Players.LocalPlayer.name) then
+    
+    
+                return old(Self, key, 100)
+            end
+            return old(Self, key, VALE)
+        end)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+    end)
+    page5:Slider("Gravity", 0, 10000,194.16,function(s)
+        Workspace.Gravity = s
+    end)
+    page5:Toggle("No Clip",false,function(a)
+        _G.NoClip = a
+    end)
+    page5:Line()
+    page5:Label("Fake")
+    page5:Textbox("Fake Bounty", "", true, function(t)
+        game:GetService("Players").LocalPlayer.leaderstats.Bounty.Value = t
+    end)
+    page5:Textbox("Fake Haki", "", true, function(Value)
+        game:GetService("Players").LocalPlayer.PlayerGui.Menu.Frame.C.Frame.Haki.Text = "Haki: "..Value
+    end)
+    page5:Textbox("Fake Melee", "", true, function(Value)
+        game:GetService("Players").LocalPlayer.PlayerGui.Menu.Frame.C.Frame.Melee.Text = "Melee: "..Value
+    end)
+    page5:Textbox("Fake Sniper", "", true, function(Value)
+        game:GetService("Players").LocalPlayer.PlayerGui.Menu.Frame.C.Frame.Sniper.Text = "Sniper: "..Value
+    end)
+    page5:Textbox("Fake Sword", "", true, function(Value)
+        game:GetService("Players").LocalPlayer.PlayerGui.Menu.Frame.C.Frame.Sword.Text = "Sword: "..Value
+    end)
+    page5:Textbox("Fake TotalLevel", "", true, function(Value)
+        game:GetService("Players").LocalPlayer.PlayerGui.Menu.Frame.C.Frame.TotalLevel.Text = "Total Level: "..Value
+    end)
+    page5:Textbox("Fake Defense", "", true, function(Value)
+        game:GetService("Players").LocalPlayer.PlayerGui.Menu.Frame.C.Frame.Defense.Text = "Defense: "..Value
+    end)
+    page5:Line()
+    page5:Label("Esp")
+    page5:Toggle("Esp - Player",false,function(ESP)
+    
+        ESPPlayer = ESP
+        while ESPPlayer do wait()
+            UpdatePlayerChams()
+        end
+    
+    end)
+    page6:Toggle("Bring DevilFruit",false,function(a)
+        _G.BringFruit = a
+    end)
+    page6:Toggle("Bring Normal Fruit",false,function(t)
+        _G.BringFruitNomal = t
+    end)
+    page6:Toggle("Auto Eat Fruit",false,function(b)
+        _G.AutoEatFruit = b
+    end)
+    local tabledrink = {
+        "Lemonade+",
+        "Smoothie+",
+        "Juice+",
+        "Cider+",
+    }
+    page7:Dropdown("Select Drink",tabledrink,function(c)
+        _G.Select_Drink = c
+    end)
+    page7:Button("Buy ",function()
+        local args = {
+            [1] = _G.Select_Drink
+        }
+        
+        workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(unpack(args))
+    end)
+    page7:Toggle("Auto Eat",false,function(v)
+        _G.AutoEatDrink = v
+    end)
+    page7:Toggle("Auto Dropt",false,function(v)
+        _G.AutoDroptDrink = v
+    end)
+    page8:Line()
+    page8:Label("--Setting--", true)
+    page8:Toggle("Anit AFK",true,function(vu)
+        local vu = game:GetService("VirtualUser")
+        game:GetService("Players").LocalPlayer.Idled:connect(function()
+            vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+            wait(1)
+            vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        end)
+    end)
+    page8:Line()
+    page8:Button("Destroy GUI", function()
+        if game.CoreGui:FindFirstChild("LagoGui") then
+            game.CoreGui:FindFirstChild("LagoGui"):Destroy()
+        end
+    end)
+    page8:Line()
+    page8:Button("Rejoin", function()
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+        ts:Teleport(game.PlaceId, p)
+    end)
+    local function HttpGet(url)
+        return game:GetService("HttpService"):JSONDecode(htgetf(url))
+    end
+    page8:Button("Server Hop", function()
+        local PlaceID = game.PlaceId
+        local AllIDs = {}
+        local foundAnything = ""
+        local actualHour = os.date("!*t").hour
+        local Deleted = false
+        function TPReturner()
+            local Site;
+            if foundAnything == "" then
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+            else
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+            end
